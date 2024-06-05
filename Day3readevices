@@ -23,8 +23,16 @@ router eigrp 22
 no auto-summary
 network 10.12.12.0 0.0.0.255
 
+How to check if EIGRP is working correctly
+show ip eigrp neighbor
+show ip eigrp topology
+show ip route eigrp
+
 router ospf 1
 router-id 22.0.0.1
 network 200.0.0.0 0.0.0.255. area 0
 network 22.0.0.1 0.0.0.0 area 0
 end
+
+@HOW TO DO RUOTE REDISTRIBUTION
+Step 1: get seed metric
