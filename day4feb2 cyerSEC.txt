@@ -30,28 +30,65 @@ Learn to Block the IPaddress from 3 "BAD" countries:
 NorthKorea, RUSSIA, China.= where all the Best hackers live.
 runner-up: Nigeria: "love scam!"
 
+TASK1: Protect your people vs scam/harm. Use the power or cisco access list to block the pornsites in the world
+Step 1: give Unlimited internet to edge
+Conf t
+ip route 0.0.0.0  0.0.0.0 200.0.0.1
+ip name-server 8.8.8.8
+ip domain-lookup
+
+Conf t
+no ip access-list standard NOPORN1
+ip access-list standard NOPORN1
+deny 66.254.0.0  0.0.255.255
+deny 10.21.0.0  0.0.255.255
+deny 68.235.0.0  0.0.255.255
+deny 104.17.0.0  0.0.255.255
+deny 88.208.0.0  0.0.255.255
+Permit Any
+Int Gi 0/0/1
+ ip access-group NOPORN1 in
+end
+
+TASK 2: USE Standard access list to block other county or classmates
+
 :Use standard Access-list[1 to 99] to block IP address from
 all evil countries:
 @edge: "version1: permit your friends, block all else!"
+
+
 config t
-no access-list 1
-access-list 1 permit 10.12.0.0 0.0.255.255
-access-list 1 permit 10.22.0.0 0.0.255.255
-access-list 1 permit 10.32.0.0 0.0.255.255
-access-list 1 permit 10.42.0.0 0.0.255.255
-access-list 1 permit 10.52.0.0 0.0.255.255
-access-list 1 deny ANY
+No ip-access-list standard NOCOL1
+ip access-list standard NOCOL1
+permit 10.12.0.0 0.0.255.255
+permit 10.22.0.0 0.0.255.255
+permit 10.32.0.0 0.0.255.255
+permit 10.42.0.0 0.0.255.255
+permit 10.52.0.0 0.0.255.255
+permit 10.52.0.0 0.0.255.255
+Deny Any
+Int Gi 0/0/1
+i[ access-group NOCOL1 in
+end
 do sh ip access-list 1
 
 Version2: "deny/block k=kalaban!"
 config t
-no access-list 2
-access-list 2 Deny 10.11.0.0 0.0.255.255
-access-list 2 deny 10.21.0.0 0.0.255.255
-access-list 2 deny 10.31.0.0 0.0.255.255
-access-list 2 deny 10.41.0.0 0.0.255.255
-access-list 2 deny 10.51.0.0 0.0.255.255
-access-list 2 Permit ANY
+No ip access-list standard NOCOL1
+ip access-list standard NOCOL1
+Deny 10.32.0.0 0.0.255.255
+deny 10.42.0.0 0.0.255.255
+deny 10.31.0.0 0.0.255.255
+deny 10.41.0.0 0.0.255.255
+deny 10.51.0.0 0.0.255.255
+deny 10.61.0.0 0.0.255.255
+deny 10.62.0.0 0.0.255.255
+deny 10.52.0.0 0.0.255.255
+ Permit Any
+Int Gi 0/0/1
+ip access-group NOCOL1 in
+end
+
 do sh ip access-list 2
 
 How to use the access-list: access-group:
