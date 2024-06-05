@@ -1,0 +1,30 @@
+TASK 4: Configure eigrp
+
+@cucm:
+config t
+router eigrp 22
+no auto-summary
+network 10.22.100.0 0.0.0.255
+
+@Corebaba
+config t
+no router eigrp 100
+router eigrp 22
+no auto-summary
+network 10.22.100.0 0.0.0.255
+network 10.22.50.0 0.0.0.255
+network 10.22.10.0 0.0.0.255
+network 10.22.1.0 0.0.0.255
+network 10.22.22.0 0.0.0.255
+
+@Edge
+config t
+router eigrp 22
+no auto-summary
+network 10.12.12.0 0.0.0.255
+
+router ospf 1
+router-id 22.0.0.1
+network 200.0.0.0 0.0.0.255. area 0
+network 22.0.0.1 0.0.0.0 area 0
+end
