@@ -7,19 +7,19 @@ network 10.11.100.0 0.0.0.255
 
 @Corebaba
 config t
-router eigrp 11
+router eigrp 22
 no auto-summary
-network 10.11.100.0 0.0.0.255
-network 10.11.50.0 0.0.0.255
-network 10.11.10.0 0.0.0.255
-network 10.11.1.0 0.0.0.255
-network 10.11.11.0 0.0.0.255
+network 10.22.100.0 0.0.0.255
+network 10.22.50.0 0.0.0.255
+network 10.22.10.0 0.0.0.255
+network 10.22.1.0 0.0.0.255
+network 10.22.22.0 0.0.0.255
 
 @Edge router
 config t
-router eigrp 11
+router eigrp 22
 no auto-summary
-network 10.11.11.0 0.0.0.255
+network 10.22.22.0 0.0.0.255
 
 how to eigrp if eigrp is working correctly
 show ip eigrp neighbor
@@ -38,17 +38,17 @@ sh run | section eigrp
 @Edge Router: both eigrp (internal) and ospf (external):
 config t
 router ospf 1
-router-id 11.0.0.1
+router-id 22.0.0.1
 network 200.0.0.0 0.0.0.255 area 0
-network 11.0.0.1 0.0.0.0 area 0
+network 22.0.0.1 0.0.0.0 area 0
 end
 
 @Edge:
 config t
 router ospf 1
- redistribute eigrp 11 subnets
-router eigrp 11
- redistribute ospf 11 Metric 1000000 1 255 1 1500
+ redistribute eigrp 22 subnets
+router eigrp 22
+ redistribute ospf 2 Metric 1000000 1 255 1 1500
 end
 
 
