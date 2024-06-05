@@ -1,4 +1,4 @@
-DNS IPv4: verizon.com.ph
+`DNS IPv4: verizon.com.ph
 DNS IPv6: epldt.com.ph
 
 TASK1: Cisco Security Fundamentals.
@@ -88,6 +88,36 @@ deny 10.52.0.0 0.0.255.255
 Int Gi 0/0/1
 ip access-group NOCOL1 in
 end
+
+CALL EVERYONE
+conf t
+Int Gi 0/0/1
+No ip access-group NOCOL1 in
+end
+
+THREESONE
+config t
+No ip access-list standard NOCOL1
+ip access-list standard NOCOL1
+Deny 10.11.0.0 0.0.255.255
+Deny 10.21.0.0 0.0.255.255
+deny 10.42.0.0 0.0.255.255
+deny 10.31.0.0 0.0.255.255
+deny 10.41.0.0 0.0.255.255
+deny 10.51.0.0 0.0.255.255
+deny 10.61.0.0 0.0.255.255
+deny 10.62.0.0 0.0.255.255
+deny 10.52.0.0 0.0.255.255
+ Permit Any
+Int Gi 0/0/1
+ip access-group NOCOL1 in
+end
+
+conf t
+Int Gi 0/0/1
+No ip access-group NOCOL1 in
+end
+
 
 do sh ip access-list 2
 
