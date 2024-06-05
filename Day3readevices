@@ -1,38 +1,54 @@
-TASK 4: Configure eigrp
 
-@cucm:
+@CM
 config t
-router eigrp 22
+router eigrp 11
 no auto-summary
-network 10.22.100.0 0.0.0.255
+network 10.11.100.0 0.0.0.255
 
 @Corebaba
 config t
-no router eigrp 100
-router eigrp 22
+router eigrp 11
 no auto-summary
-network 10.22.100.0 0.0.0.255
-network 10.22.50.0 0.0.0.255
-network 10.22.10.0 0.0.0.255
-network 10.22.1.0 0.0.0.255
-network 10.22.22.0 0.0.0.255
+network 10.11.100.0 0.0.0.255
+network 10.11.50.0 0.0.0.255
+network 10.11.10.0 0.0.0.255
+network 10.11.1.0 0.0.0.255
+network 10.11.11.0 0.0.0.255
 
-@Edge
+@Edge router
 config t
-router eigrp 22
+router eigrp 11
 no auto-summary
-network 10.12.12.0 0.0.0.255
+network 10.11.11.0 0.0.0.255
 
-How to check if EIGRP is working correctly
+how to eigrp if eigrp is working correctly
 show ip eigrp neighbor
 show ip eigrp topology
 show ip route eigrp
 
+*******
+show ip ospf neighbor
+show ip route ospf
+show ip route eigrp
+show ip protocols
+sh run | section ospf
+sh run | section eigrp
+******
+
+@Edge Router: both eigrp (internal) and ospf (external):
+config t
 router ospf 1
-router-id 22.0.0.1
-network 200.0.0.0 0.0.0.255. area 0
-network 22.0.0.1 0.0.0.0 area 0
+router-id 11.0.0.1
+network 200.0.0.0 0.0.0.255 area 0
+network 11.0.0.1 0.0.0.0 area 0
 end
 
-@HOW TO DO RUOTE REDISTRIBUTION
-Step 1: get seed metric
+@Edge:
+config t
+router ospf 1
+ redistribute eigrp 11 subnets
+router eigrp 11
+ redistribute ospf 11 Metric 1000000 1 255 1 1500
+end
+
+
