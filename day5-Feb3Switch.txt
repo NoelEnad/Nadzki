@@ -19,7 +19,7 @@ method1: Ipv6 autoconfig/autoBwisit
 @p1
 config t
 ipv6 unicast-routing
-int e0/0
+int Giga 2
  ipv6 enable
  Ipv6 address autoconfig
 
@@ -35,7 +35,7 @@ as host.
 @P1
 config t
 ipv6 unicast-routing
-int e0/0
+int Giga 2
  no shutdown
  ipv6 add dada:dada:fafa:fafa::/64 EUI-64
  do sh ipv6 int brief
@@ -54,8 +54,8 @@ Method3: STatic IPv6 address manual:
 @p1
 config t
 ipv6 unicast-routing
-int e0/0
- ipv6 add aaaa:bbbb:cccc:dddd::1212/64
+int Giga 2
+ ipv6 add abab:bcbc:cdcd::baba/64
  do sh ipv6 int brief
 end
 
