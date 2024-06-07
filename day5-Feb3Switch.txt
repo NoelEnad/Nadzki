@@ -287,7 +287,7 @@ spanning-tree mst 1 root primary
 spanning-tree mst 2 root Secondary
 spanning-tree mst 3 root primary
 
-TASK15: Implementing Port-Security in Cisco/bawal Nakaw/bawalPalit.
+TASK15: Implementing Port-Security in Cisco/bawal Nakaw/bawalPalit.(Xmen)
 Switch:
 baba:
 sh cdp nei
@@ -315,7 +315,7 @@ switchport port-security violation shutdown
 do sh port-security address
    1    ccd8.c1fb.1045    SecureSticky                  Fa0/6        -
    1    ccd8.c1fb.2325    SecureSticky                  Fa0/8
-do sh int status err-disable
+do sh int status err-disable  "to check if ok ba sya, dapat violation inag swap nmu"
 
 @baba: make it alive:
 config t
