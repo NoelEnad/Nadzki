@@ -1,4 +1,7 @@
 
+
+
+
 @CM
 config t
 router eigrp 22
@@ -51,4 +54,11 @@ router eigrp 22
  redistribute ospf 1 Metric 1000000 1 255 1 1500
 end
 
+@ edge
+conf t 
+router ospf 1
+redistribute eigrp 22 subnets
+router eigrp 22
+redistribute ospf 1 Metric 1000000 1 255 1 1500
+end
 
